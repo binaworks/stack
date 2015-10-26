@@ -1,3 +1,3 @@
-# stack.js
+# d3_lightning_stack
 
-A presentation library with intuitive, scroll-based navigation.
+Use [stack](https://github.com/mbostock/stack) for lightning talk on d3.js.
