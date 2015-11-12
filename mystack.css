@@ -30,4 +30,7 @@ a:hover {
 
 circle { fill: darkorange; } 
 
-#controls { width: 100px; text-align:center; }
+#controls { 
+  width: 200px; 
+  text-align:center; 
+  }

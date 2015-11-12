@@ -88,36 +88,30 @@
 <section>
   <h3>General Update Pattern</h1>
 <div id="controls">
-    <p id="numbers"=></p>
+    <p>[<span id="numbers"></span>]</p>
     <button onclick="mysample.next()">Update</button>
 </div>
-<svg width="100" height="400">
+<svg width="200" height="400">
     <g id="circles"/>
  </svg>
  <pre id="update_code">
    <code>
-// DATA JOIN
-
+// SELECT, JOIN data
 var selection = svgG.selectAll("circle")
   .data(data);
-
-  
-// UPDATE old elements as needed.
-
+ 
+// UPDATE and TRANSITION
 selection.transition()
   .duration(750)
   .attr("r", function (d) { return d; });
 
-
-// ENTER - Create new elements as needed.
-
+// ENTER, APPEND
 selection.enter().append("circle")
-  .attr("cy", function (d, i) { return 100 * (i + 1); })
-  .attr("cx", 50)
+  .attr("cy", function (d, i) { return 100 * i + 50; })
+  .attr("cx", 100)
   .attr("r", function (d) { return d; });
 
-// EXIT - Remove old elements as needed.
-
+// EXIT, REMOVE
 selection.exit().remove();
   </code>
 </pre>
@@ -126,8 +120,19 @@ selection.exit().remove();
 <h3>Learning by Example</h3>
 <h4><a title="Blocks on GitHub" href="http://bl.ocks.org/mbostock">
 mbostock's blocks</a></h4>
+<a class="gist" title="Bar Chart II" href="http://bl.ocks.org/mbostock/7341714">
+<img alt="Bar Chart II" src="http://bl.ocks.org/mbostock/raw/7341714/thumbnail.png">
+</a>
+<a class="gist" title="Bar Chart" href="http://bl.ocks.org/mbostock/3885304">
+<img alt="Bar Chart" src="http://bl.ocks.org/mbostock/raw/3885304/thumbnail.png">
+</a>
+<a class="gist" title="Bar Chart with Negative Values" href="http://bl.ocks.org/mbostock/2368837">
+<img alt="Bar Chart with Negative Values" src="http://bl.ocks.org/mbostock/raw/2368837/thumbnail.png">
+</a>
+<a class="gist" title="Stacked Bar Chart" href="http://bl.ocks.org/mbostock/3886208">
+<img alt="Stacked Bar Chart" src="http://bl.ocks.org/mbostock/raw/3886208/thumbnail.png">
+</a>
 </section>
-
 <section>
   <h3>D3 <a href="https://github.com/mbostock/d3/wiki/Plugins">Plugins</a></h3>
 <p>Reusability for more difficult sorts of diagrams. Example : <a href="http://bost.ocks.org/mike/sankey/">Sankey Diagrams</a></p>
@@ -152,7 +157,7 @@ var section = d3.selectAll("section"),
     followAnchor = d3.select("#follow-anchor"),
     followIndex = section[0].indexOf(follow.node());
     
-var mysample = update_sample().next();
+var mysample = update_sample();
 
 function refollow() {
   followAnchor.style("top", (followIndex + (1 - mystack.scrollRatio()) / 2 - d3.event.offset) * 100 + "%");

@@ -9,10 +9,11 @@ function update_sample() {
     svgG = d3.select("#circles"),
     index = 0,
     end = numbers.length - 1,
-    par = d3.select("#numbers");
+    par = d3.select("#numbers"),
+    data = [];
 
   sample.next = function () {
-    var data = numbers[index];
+    data = numbers[index];
     par.html(data.toString());
 
     // DATA JOIN
@@ -29,8 +30,8 @@ function update_sample() {
     // ENTER
     // Create new elements as needed.
     selection.enter().append("circle")
-      .attr("cy", function (d, i) { return 100 * (i + 1); })
-      .attr("cx", 50)
+      .attr("cy", function (d, i) { return 100 * i + 50; })
+      .attr("cx", 100)
       .attr("r", function (d) { return d; });
 
     // EXIT
