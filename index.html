@@ -1,6 +1,10 @@
 <!DOCTYPE html>
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
+<title>D3 Lightning Presentation</title>
+<link rel="stylesheet" href="mystack.css">  
+</head>
 
 <section>
   <h1>Data Visualization with d3.js</h1>
@@ -86,35 +90,36 @@
 </ul>
 </section>
 <section>
-  <h3>General Update Pattern</h1>
-<div id="controls">
-    <p>[<span id="numbers"></span>]</p>
-    <button onclick="mysample.next()">Update</button>
-</div>
-<svg width="200" height="400">
-    <g id="circles"/>
- </svg>
- <pre id="update_code">
+  <h3>Update Pattern</h1>
+  <div id="controls">
+    <div >
+        <button onclick="mysample.next()">Update</button>
+    </div>
+    <svg width="200" height="400">
+        <g id="circles"/>
+    </svg>
+  </div>
+ <div id="update_code">
+ <pre >
    <code>
-// SELECT, JOIN data
-var selection = svgG.selectAll("circle")
-  .data(data);
+var <var>data</var> = [<span id="numbers"></span>];
+
+var <var>selection</var> = svgG.<strong>selectAll</strong>("circle")
+  .<strong>data</strong>(data);
  
-// UPDATE and TRANSITION
-selection.transition()
-  .duration(750)
+selection.<strong>transition()
+  .duration</strong>(750)
   .attr("r", function (d) { return d; });
 
-// ENTER, APPEND
-selection.enter().append("circle")
+selection.<strong>enter().append</strong>("circle")
   .attr("cy", function (d, i) { return 100 * i + 50; })
   .attr("cx", 100)
   .attr("r", function (d) { return d; });
 
-// EXIT, REMOVE
-selection.exit().remove();
+selection.<strong>exit().remove()</strong>;
   </code>
 </pre>
+</div>
 </section>
 <section>
 <h3>Learning by Example</h3>
@@ -150,7 +155,6 @@ mbostock's blocks</a></h4>
   <p>It is fun (for JS developers)!</p>
   <aside class="grey">This presentation was implemented using <a href="https://github.com/mbostock/stack">stack</a>.</aside>
 </section>
-<link rel="stylesheet" href="mystack.css">  
 <script src="d3.v3.min.js"></script>
 <script src="stack.v1.min.js"></script>
 <script src="update_sample.js"></script>
@@ -179,5 +183,5 @@ function deactivate(d, i) {
   if (i === followIndex) mystack.on("scroll.follow", null);
 }
 
-
 </script>
+
